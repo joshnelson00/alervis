@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+lambda.zip
+build/
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+__pycache__/
+*.pyc
