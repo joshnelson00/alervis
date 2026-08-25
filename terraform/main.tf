@@ -4,26 +4,14 @@ provider "aws" {
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "../lambda/index.py"
-  output_path = "../lambda_function.zip"
+  source_file = "../lambda/dispatch/index.py"
+  output_path = "../dispatch_lambda_function.zip"
 }
 
-resource "aws_iam_role" "worker_role" {
-  name = "alervis_worker_role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "lambda.amazonaws.com"
-        }
-      },
-    ]
-  })
+data "archive_file" "worker_lambda_zip" {
+  type        = "zip"
+  source_file = "../lambda/worker/index.py"
+  output_path = "../worker_lambda_function.zip"
 }
 
 resource "aws_iam_role" "dispatch_role" {
@@ -57,9 +45,22 @@ resource "aws_iam_role_policy" "dispatch_invoke" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "worker_basic_execution" {
-  role       = aws_iam_role.worker_role.id
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+resource "aws_iam_role" "worker_role" {
+  name = "alervis_worker_role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+      },
+    ]
+  })
 }
 
 resource "aws_iam_role_policy_attachment" "dispatch_basic_execution" {
@@ -67,9 +68,14 @@ resource "aws_iam_role_policy_attachment" "dispatch_basic_execution" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
+resource "aws_iam_role_policy_attachment" "worker_basic_execution" {
+  role       = aws_iam_role.worker_role.id
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
 resource "aws_lambda_function" "alervis_dispatch_lambda" {
   function_name = "alervis_dispatch_function"
-  role          = aws_iam_role.alervis_dispatch_role.arn
+  role          = aws_iam_role.dispatch_role.arn
 
   filename         = data.archive_file.lambda_zip.output_path
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
@@ -77,4 +83,19 @@ resource "aws_lambda_function" "alervis_dispatch_lambda" {
   handler = "index.handler"
   runtime = "python3.12"
 }
+
+resource "aws_lambda_function" "alervis_worker_lambda" {
+  function_name = "alervis_worker_function"
+  role          = aws_iam_role.worker_role.arn
+
+  filename         = data.archive_file.worker_lambda_zip.output_path
+  source_code_hash = data.archive_file.worker_lambda_zip.output_base64sha256
+
+  handler = "index.handler"
+  runtime = "python3.12"
+}
+
+
+
+
 
