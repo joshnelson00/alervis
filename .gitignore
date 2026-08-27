@@ -224,3 +224,6 @@ build/
 .terraform.lock.hcl
 __pycache__/
 *.pyc
+
+# Various .zip files
+./terraform/modules/alexa-skill/*.zip
