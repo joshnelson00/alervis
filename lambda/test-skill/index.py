@@ -1,7 +1,7 @@
 
 def handler(event, context) -> dict:
     return {
-    "version": "1.0",
+        "version": "1.0",
         "response": {
             "outputSpeech": {
                 "type": "PlainText",

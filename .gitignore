@@ -226,7 +226,6 @@ __pycache__/
 *.pyc
 
 # Various .zip files
-./terraform/modules/alexa-skill/*.zip
-
+*.zip
 # TODO File
 TODO.md
