@@ -40,6 +40,9 @@ alervis/
 
 The `lambda/` directory contains the individual Alexa Skill implementations, while `terraform/` contains the infrastructure required to deploy and connect those skills to AWS.
 
+## Architecture
+![Alervis Architecture](AlervisArchDiagram.svg)
+
 ## Technology
 
 - **Amazon Alexa**: voice interface and Skill platform
