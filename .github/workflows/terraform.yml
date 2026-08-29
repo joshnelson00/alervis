@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   terraform:
-    name: "Terraform Plan"
+    name: "Terraform"
     runs-on: ubuntu-latest
     defaults:
       run:
