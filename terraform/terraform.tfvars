@@ -1,6 +1,6 @@
 skills = {
-  pi-checkup = {
-    alexa_skill_id = "amzn1.ask.skill.REPLACE_ME"
+  google-health-test = {
+    alexa_skill_id = "amzn1.ask.skill.8b09e972-09d6-463f-8249-e3ebc4183cc7"
     source_dir     = "../lambda/google-health-test/"
   }
   test-skill = {
