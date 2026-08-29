@@ -1,4 +1,3 @@
-
 def handler(event, context) -> dict:
     return {
         "version": "1.0",
