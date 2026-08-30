@@ -1,9 +1,9 @@
 skills = {
-  google-health-test = {
+  google_health_test = {
     alexa_skill_id = "amzn1.ask.skill.8b09e972-09d6-463f-8249-e3ebc4183cc7"
     source_dir     = "../lambda/google-health-test/"
   }
-  test-skill = {
+  test_skill = {
     alexa_skill_id = "amzn1.ask.skill.REPLACE_ME"
     source_dir     = "../lambda/test-skill/"
   }
