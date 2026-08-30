@@ -7,4 +7,8 @@ skills = {
     alexa_skill_id = "amzn1.ask.skill.REPLACE_ME"
     source_dir     = "../lambda/test-skill/"
   }
+  pbm_sprint_items = {
+    alexa_skill_id = "amzn1.ask.skill.REPLACE_ME"
+    source_dir     = "../lambda/pbm-jira-summary/"
+  }
 }

@@ -3,4 +3,6 @@ name = "alervis"
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.14.6"
-dependencies = []
+dependencies = [
+    "requests>=2.34.2",
+]
