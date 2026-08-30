@@ -53,4 +53,4 @@ The `lambda/` directory contains the individual Alexa Skill implementations, whi
 
 ## Project Status
 
-Alervis is a work in progress and serves as a foundation for experimenting with voice-controlled automation, serverless applications, and AWS infrastructure.
+Alervis is a work in progress and serves as a foundation for experimenting with voice-controlled automation, serverless applications, and AWS infrastructure for personal uses.
