@@ -227,5 +227,12 @@ __pycache__/
 
 # Various .zip files
 *.zip
+
 # TODO File
 TODO.md
+
+# halo-api-reference
+halo-api-reference/
+
+
+
