@@ -1,7 +1,7 @@
 data "archive_file" "skill_zip" {
   type        = "zip"
   source_dir  = var.source_dir
-  output_path = "../../../lambda/artifacts/${var.skill_name}.zip"
+  output_path = "lambda/artifacts/${var.skill_name}.zip"
 }
 
 resource "aws_iam_role" "skill_role" {
