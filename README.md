@@ -32,6 +32,9 @@ alervis/
 ├── lambda/
 │   └── skill_name/
 │
+├── rpi/
+│   └── halo-learn-server/
+│
 └── terraform/
     ├── modules/
     │   └── alexa-skill/
@@ -39,6 +42,11 @@ alervis/
 ```
 
 The `lambda/` directory contains the individual Alexa Skill implementations, while `terraform/` contains the infrastructure required to deploy and connect those skills to AWS.
+
+The `rpi/` directory contains services that run on a Raspberry Pi rather than in
+Lambda. These exist for capabilities that need a persistent, authenticated
+browser session — something Lambda's stateless execution model cannot provide.
+See [`rpi/halo-learn-server`](rpi/halo-learn-server/README.md).
 
 ## Architecture
 ![Alervis Architecture](media/AlervisArchDiagram.png)

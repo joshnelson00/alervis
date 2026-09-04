@@ -19,11 +19,13 @@ testpaths = ["tests"]
 pythonpath = ["lambda/test-skill",
             "lambda/google-health-test",
             "lambda/pbm-jira-summary",
+            "rpi/halo-learn-server",
         ]
 addopts = "--import-mode=importlib"
 
 [tool.pyright]
 extraPaths = ["lambda/test-skill",
         "lambda/google-health-test",
-        "lambda/pbm-jira-summary"
+        "lambda/pbm-jira-summary",
+        "rpi/halo-learn-server"
         ]

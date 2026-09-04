@@ -1,0 +1,28 @@
+; systemd --user unit. Install with:
+;   mkdir -p ~/.config/systemd/user
+;   cp systemd/halo-learn-server.service ~/.config/systemd/user/
+;   loginctl enable-linger $USER        # keep running without a login session
+;   systemctl --user daemon-reload
+;   systemctl --user enable --now halo-learn-server
+;
+; Secrets live in ~/.config/halo-learn-server.env (mode 600), never in the repo.
+
+[Unit]
+Description=Halo Learn session service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/halo-learn-server
+EnvironmentFile=%h/.config/halo-learn-server.env
+ExecStart=%h/halo-learn-server/.venv/bin/python -m halo.server
+Restart=on-failure
+RestartSec=15
+
+; Chromium needs a writable /tmp and a decent file-descriptor budget.
+PrivateTmp=no
+LimitNOFILE=8192
+
+[Install]
+WantedBy=default.target

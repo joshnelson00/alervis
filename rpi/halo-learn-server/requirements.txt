@@ -1,0 +1,5 @@
+# Runs on the Raspberry Pi (Debian 12, Python 3.11), not in Lambda.
+playwright>=1.62.0
+fastapi>=0.115.0
+uvicorn>=0.32.0
+requests>=2.32.0
